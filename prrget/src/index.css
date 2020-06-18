@@ -1,0 +1,111 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+div.searchBar {
+  background-color: rgb(204, 2, 0);
+  display: inlign-block;
+  font-size: 20px;
+}
+.navBar {
+  font-family: 'Lato', sans-serif;
+  list-style: none;
+  border: 1px solid #ccc;
+  border-width: 1px;
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+  text-align: left;
+}
+.search {
+  display: inline;
+  width: 600px;
+  position: relative;
+  box-sizing: border-box;
+
+}
+
+.navBar li {
+  display: inline;
+  padding-inline-start: 2mm;
+  padding-inline-end: 4mm;
+  padding-right: 9mm;
+
+}
+
+form.form {
+  display: inline;
+}
+
+
+select.category {
+  font-size: 20px;
+
+}
+select{
+  padding-right: 5mm;
+  padding: 3mm;
+  padding-bottom: 6mm;
+  background: rgb(204, 2, 0);
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  border: none;
+}
+
+
+input.search {
+  border-radius: 5mm;
+  padding: 2mm;
+  padding-left: 4mm;
+  border-style: none;
+  font-size: 18px;
+  border-color: none;
+
+
+}
+
+img {
+  max-width: 50px;
+  max-height: 50px;
+  margin-bottom: -4mm;
+}
+ img.signIn {
+   padding: 3mm;
+
+}
+
+button {
+  font-size: 20px;
+  padding-bottom: 6mm;
+  background: rgb(204, 2, 0);
+  border: none;
+  color: white;
+  font-weight: 900;
+  font-family: 'Lato', sans-serif;
+}
+img.targetLogo {
+  padding-top: 2mm;
+  padding-left: 3mm;
+}
+button.sameDayDelivery {
+  font-size: 20px;
+  padding-right: 0mm;
+  background: rgb(204, 2, 0);
+  border: none;
+  color: white;
+  font-weight: 900;
+  font-family: 'Lato', sans-serif;
+}
+
