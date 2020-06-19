@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-div.searchBar {
+div.navWrapper {
   background-color: rgb(204, 2, 0);
   display: inlign-block;
   font-size: 20px;
@@ -20,20 +20,45 @@ div.searchBar {
 .navBar {
   font-family: 'Lato', sans-serif;
   list-style: none;
-  border: 1px solid #ccc;
+  border: none;
   border-width: 1px;
-  margin: 0;
+  margin-bottom: 10mm;
+  padding-top: 3mm;
+  padding-bottom: 3mm;
   text-align: center;
   font-size: 14px;
   text-align: left;
 }
-.search {
-  display: inline;
-  width: 600px;
-  position: relative;
-  box-sizing: border-box;
+/* --SearchDropdown  */
+ul.searchDropMenu {
+  padding: 12px 16px;
 
+  border-bottom-left-radius: 2mm;
+  border-bottom-right-radius: 2mm;
+
+  background: white;
+  font-size: 19px;
+  color: rgb(51,51,51);
+  width: 38%;
+  position: relative;
+  
+  left: 58%;
+  transform:
+    translate(-17%, 0%);
 }
+
+li.row {
+  list-style-type: none;
+  padding-top: 6.3mm;
+}
+div.topBorder{
+  border-top: 1px;
+  border-color: rgb(172, 165, 165);
+  border-top-style: solid;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
 
 .navBar li {
   display: inline;
@@ -43,69 +68,142 @@ div.searchBar {
 
 }
 
+div.CatSuggestions {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  font-weight: bold !important;
+  padding-left: 5mm;
+  padding-bottom: 4mm;
+}
+
+div.catRows {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  padding: 1mm;
+  padding-left: 5mm;
+  margin-top: 1mm;
+  margin-bottom: -4mm;
+}
+
+div.catRowsLast {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  padding: 1mm;
+  padding-left: 5mm;
+  margin-top: 1mm;
+}
+
 form.form {
   display: inline;
 }
 
-
-select.category {
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border-radius: 5px;
+  cursor: pointer;
   font-size: 20px;
+}
 
+li.category{
+  padding: 10mm;
 }
 select{
-  padding-right: 5mm;
-  padding: 3mm;
-  padding-bottom: 6mm;
+  font-size: 18px;
   background: rgb(204, 2, 0);
   color: white;
   font-family: 'Lato', sans-serif;
   font-weight: 900;
-  font-size: 20px;
   border: none;
 }
 
+.searchBarWrap {
+  width: 67%;
+  position: absolute;
+  top: 4%;
+  left: 84.3%;
+  transform:
+    translate(-50%, -50%);
+}
+
+.searchIcon {
+  position: absolute;
+  top: 16px;
+  margin-left: -35px;
+  color: grey;
+}
 
 input.search {
   border-radius: 5mm;
-  padding: 2mm;
+  padding-top: 2.4mm;
+  padding-bottom: 2.4mm;
   padding-left: 4mm;
   border-style: none;
-  font-size: 18px;
+  font-size: 16px;
   border-color: none;
+  width: 60%;
+}
 
 
+div.searchDropdown {
+  background: rgba(0, 0, 0, 0.7);
+  /* position: relative;
+  background:linear-gradient(
+    to right,
+    hsl(211, 100%, 50%),
+    hsl(179, 100%, 30%)
+  );
+  z-index: 1; */
+
+  padding-bottom: 30cm;
+  margin-top: -15.5mm;
 }
 
 img {
-  max-width: 50px;
-  max-height: 50px;
-  margin-bottom: -4mm;
+  max-width: 54px;
+  max-height: 54px;
 }
- img.signIn {
-   padding: 3mm;
+img.shoppingCart {
 
+  max-width: 3.5%;
+  max-height: 3.5%;
+}
+img.userIcon {
+  max-width: 5%;
+  max-height: 5%;
 }
 
 button {
   font-size: 20px;
-  padding-bottom: 6mm;
   background: rgb(204, 2, 0);
   border: none;
   color: white;
   font-weight: 900;
   font-family: 'Lato', sans-serif;
+}
+
+span.userIcon {
+  padding-left: 8mm;
+}
+li.targetLogo {
+  padding-left: 3mm;
 }
 img.targetLogo {
   padding-top: 2mm;
   padding-left: 3mm;
 }
 button.sameDayDelivery {
-  font-size: 20px;
-  padding-right: 0mm;
+  font-size: 16px;
   background: rgb(204, 2, 0);
   border: none;
   color: white;
   font-weight: 900;
   font-family: 'Lato', sans-serif;
 }
+
+span.shoppingCart {
+  padding-left: 5mm;
+  padding-bottom: 5mm;
+}
+
 
