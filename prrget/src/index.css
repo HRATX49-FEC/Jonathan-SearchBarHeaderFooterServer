@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-div.searchBar {
+div.navWrapper {
   background-color: rgb(204, 2, 0);
   display: inlign-block;
   font-size: 20px;
@@ -20,19 +20,14 @@ div.searchBar {
 .navBar {
   font-family: 'Lato', sans-serif;
   list-style: none;
-  border: 1px solid #ccc;
+  border: none;
   border-width: 1px;
-  margin: 0;
+  margin-bottom: 10mm;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
   text-align: center;
   font-size: 14px;
   text-align: left;
-}
-.search {
-  display: inline;
-  width: 600px;
-  position: relative;
-  box-sizing: border-box;
-
 }
 
 .navBar li {
@@ -47,48 +42,78 @@ form.form {
   display: inline;
 }
 
-
-select.category {
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border-radius: 5px;
+  cursor: pointer;
   font-size: 20px;
-
 }
+
+
 select{
-  padding-right: 5mm;
-  padding: 3mm;
-  padding-bottom: 6mm;
+  padding-bottom: 5mm;
   background: rgb(204, 2, 0);
   color: white;
   font-family: 'Lato', sans-serif;
   font-weight: 900;
-  font-size: 20px;
   border: none;
 }
+select.category{
+  font-size: 18px;
+}
 
+.searchBarWrap {
+  width: 40%;
+  position: absolute;
+  top: 3%;
+  left: 80%;
+  transform:
+    translate(-50%, -50%);
+}
+
+.searchIcon {
+  position: absolute;
+  top: 16px;
+  margin-left: -35px;
+  color: grey;
+}
 
 input.search {
   border-radius: 5mm;
-  padding: 2mm;
-  padding-left: 4mm;
+  padding-top: 1.5mm;
+  padding-bottom: 1.5mm;
+  padding-left: 2mm;
   border-style: none;
-  font-size: 18px;
+  font-size: 16px;
   border-color: none;
+  width: 60%;
+}
+/* select.category option:focus {
+  background-color: white;
+} */
 
+div.searchDropdown {
+  background: rgba(0, 0, 0, 0.471);
+  /* position: relative;
+  background:linear-gradient(
+    to right,
+    hsl(211, 100%, 50%),
+    hsl(179, 100%, 30%)
+  );
+  z-index: 1; */
 
+  padding-bottom: 30cm;
+  margin-top: -15.5mm;
 }
 
 img {
   max-width: 50px;
   max-height: 50px;
-  margin-bottom: -4mm;
-}
- img.signIn {
-   padding: 3mm;
-
 }
 
 button {
   font-size: 20px;
-  padding-bottom: 6mm;
   background: rgb(204, 2, 0);
   border: none;
   color: white;
@@ -100,12 +125,13 @@ img.targetLogo {
   padding-left: 3mm;
 }
 button.sameDayDelivery {
-  font-size: 20px;
-  padding-right: 0mm;
+  font-size: 16px;
   background: rgb(204, 2, 0);
   border: none;
   color: white;
   font-weight: 900;
   font-family: 'Lato', sans-serif;
+}
+img.userIcon {
 }
 

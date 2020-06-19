@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Searchbar from "./Searchbar.js";
+import SearchDropdown from "./SearchDropdown.js";
 
 const axios = require('axios');
 
@@ -9,11 +10,14 @@ class App extends React.Component {
     super();
     this.state = {
       cats: [],
-      catName: ''
+      catName: '',
+      searchDrop: false
     };
     this.getCat = this.getCat.bind(this);
     this.onCatNameChange = this.onCatNameChange.bind(this);
     this.getSearchedCat = this.getSearchedCat.bind(this);
+    this.searchDropAnimation = this.searchDropAnimation.bind(this);
+    this.searchDropFade = this.searchDropFade.bind(this);
   }
   componentDidMount () {
     this.getCat();
@@ -50,18 +54,36 @@ class App extends React.Component {
     })
   }
 
+  searchDropAnimation (event) {
+    setTimeout(() => {
+    this.setState ({
+      searchDrop: true
+    })}, 200);
+  }
+
+  searchDropFade (event) {
+    this.setState ({
+      searchDrop: false
+    })
+  }
+
   render() {
 
     var renderedCat = 'NO KITTY'
+    var renderSearchDrop = '';
 
     if(this.state.cats.length !== 0) {
       console.log(this.state.cats)
       renderedCat = this.state.cats[0].name
     }
+    if(this.state.searchDrop === true) {
+      renderSearchDrop = <SearchDropdown searchDrop={this.searchDropFade} />
+    }
     return (
       <div>
       <div>
         <Searchbar
+          searchDropdown={this.searchDropAnimation}
           getSearchedCat={this.getSearchedCat}
           getCat={this.getCat}
           catChange={this.onCatNameChange}
@@ -69,6 +91,7 @@ class App extends React.Component {
       </div>
 
       <div className="testCat">Test, Cat from Database: {renderedCat}  </div>
+      <div>{renderSearchDrop}</div>
 
       </div>
     );
