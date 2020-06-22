@@ -3,7 +3,6 @@ import Searchbar from "./components/Searchbar.jsx";
 import SearchDropdown from "./components/SearchDropdown.jsx";
 import CategoryDropdown from "./components/CategoryDropdown.jsx";
 import Navbar from "./components/Navbar.jsx";
-import bodyImg from "./images/bodyImg.png";
 
 const axios = require('axios');
 
