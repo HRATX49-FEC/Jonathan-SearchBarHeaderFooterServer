@@ -22,7 +22,7 @@ class App extends React.Component {
     this.searchDropFade = this.searchDropFade.bind(this);
     this.categoryDropAnimation = this.categoryDropAnimation.bind(this);
     this.categoryDropFade = this.categoryDropFade.bind(this);
-    this.getSuggestedCat = this.getSuggestedCat.bind(this);
+    // this.getSuggestedCat = this.getSuggestedCat.bind(this);
 
   }
 
@@ -32,16 +32,14 @@ class App extends React.Component {
 
   }
   getCat () {
-    // var catName = this.state.catName;
-    console.log('get request cat name: ');
+    var name = this.state.catName;
+    console.log('get request cat name: ', name);
     axios.get(`/api/search/${this.state.catName}`)
       .then(res => {
+        console.log(res);
         this.setState({
           cats: res.data
         })
-      })
-      .then(res => {
-        console.log(res)
       })
       .catch(err => {
         console.log('axios error getting cats: ', err);
@@ -53,11 +51,11 @@ class App extends React.Component {
     this.getCat();
   }
 
-  getSuggestedCat (event) {
-    event.preventDefault();
-    console.log(event);
-    this.getCat(event)
-  }
+  // getSuggestedCat (event) {
+  //   event.preventDefault();
+  //   console.log(event);
+  //   this.getCat(event)
+  // }
 
   onCatNameChange (event) {
     console.log(this.state.catName);
@@ -97,15 +95,8 @@ class App extends React.Component {
   }
 
   render() {
-
-    var renderedCat = 'NO KITTY'
     var renderSearchDrop = '';
     var renderCategoryDrop = '';
-
-    if(this.state.cats.length !== 0) {
-      console.log(this.state.cats)
-      renderedCat = this.state.cats[0].name
-    }
     if(this.state.searchDrop === true) {
       renderSearchDrop = <SearchDropdown getSuggestedCat={this.getSuggestedCat} searchDrop={this.searchDropFade} />
     }
@@ -127,8 +118,6 @@ class App extends React.Component {
         <div>
           <Navbar />
         </div>
-
-        <div className="testCat">Test, Cat from Database: {renderedCat}  </div>
         <div>{renderSearchDrop}</div>
         <div>{renderCategoryDrop}</div>
 

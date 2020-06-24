@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node server.js",
     "dev-server": "nodemon server/server.js",
     "dev-compile": "webpack -d -w"
   },

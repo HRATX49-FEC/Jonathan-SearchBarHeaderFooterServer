@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const PORT = 3000;
+const PORT = 5300;
 const query = require('../db/querys.js');
 const bodyparser = require('body-parser');
 const axios = require('axios');
@@ -13,6 +13,7 @@ app.use(bodyparser.json());
 
 app.get(`/api/search/:catName`, (req, res) => {
     var params = [req.params.catName];
+    console.log(params);
 
   query.getCats(params, (err, results) => {
     if(err) {

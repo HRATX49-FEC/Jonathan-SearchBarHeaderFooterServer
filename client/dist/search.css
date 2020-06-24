@@ -66,12 +66,12 @@ ul.categoryDropMenu {
 div.searchDropdown {
   background: rgba(0, 0, 0, 0.7);
   padding-bottom: 30cm;
-  margin-top: -64px;
+  margin-top: -36px;
 }
 div.categoryDropdown {
   background: rgba(0, 0, 0, 0.7);
   padding-bottom: 30cm;
-  margin-top: -64px;
+  margin-top: -36px;
 }
 
 ul.searchDropMenu {
@@ -136,7 +136,7 @@ form.form {
   cursor: pointer;
   font-size: 20px;
 }
-li.leftSide span:hover {
+li.leftSide span#left:hover {
   text-decoration: underline;
   cursor: pointer;
 }
@@ -149,13 +149,15 @@ li.leftSide{
   font-weight: bold !important;
   display: inline-flex;
   border: none;
+  left: 5%;
   justify-content: center;
   position: relative;
   padding-right: 3mm;
 }
-li.leftSide span {
+li.leftSide span#left {
   padding: 2mm;
   width: max-content;
+  color:white;
 }
 
 .searchBarWrap {
@@ -209,8 +211,8 @@ span.userIcon {
 }
 span.targetLogo {
   position: relative;
-  width: 53px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   padding-left: 4mm;
   padding-right: 5mm;
   padding-bottom: 3mm;
@@ -251,15 +253,14 @@ span.shoppingCart {
     font-size: 0px;
   }
   li.leftSide {
-    font-size: 18px;
-    background: rgb(204, 2, 0);
+    font-size: 14px;
+    padding-right: 0mm;
     color: white;
     font-family: 'Lato', sans-serif;
     font-weight: bold !important;
-    display: inline-flex;
     border: none;
-    justify-content: center;
-    position: relative;
+    left: 4%;
+    justify-content: left;
   }
 
   span.category {
@@ -267,14 +268,9 @@ span.shoppingCart {
   }
   /* //the search bar moves overflow:  */ 
   .searchBarWrap {
-    width: 40%;
-    justify-content: flex-end;
-    box-sizing: inherit;
-    -webkit-box-align: center;
-    align-items: center;
-    position: relative;
-    margin-left: 20px;
-    margin-right: 32px;
+    width: 98%;
+    left: -3%;
+    margin-right: -21px;
   
   }
   
@@ -299,6 +295,7 @@ span.shoppingCart {
   
   .rightSide {
     margin-top: 1mm;
+    padding-left: 0mm;
     margin-left: 4mm;
     display: inline-flex;
     border: none;
@@ -321,6 +318,10 @@ span.shoppingCart {
     position: relative;
     left: 49%;
     margin-top: -2.5mm;
+  }
+  img.userIcon {
+    max-width: 0px;
+    max-height: 0px;
   }
 
 }
