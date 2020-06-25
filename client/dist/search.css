@@ -149,13 +149,13 @@ li.leftSide{
   font-weight: bold !important;
   display: inline-flex;
   border: none;
-  left: 5%;
+  left: 2%;
   justify-content: center;
   position: relative;
   padding-right: 3mm;
 }
 li.leftSide span#left {
-  padding: 2mm;
+  padding: 1mm;
   width: max-content;
   color:white;
 }
@@ -197,15 +197,6 @@ img.userIcon {
   max-height: 60px;
 }
 
-button {
-  font-size: 20px;
-  background: rgb(204, 2, 0);
-  border: none;
-  color: white;
-  font-weight: 900;
-  font-family: 'Lato', sans-serif;
-}
-
 span.userIcon {
   padding-left: 1mm;
 }
@@ -214,13 +205,13 @@ span.targetLogo {
   width: 50px;
   height: 50px;
   padding-left: 4mm;
-  padding-right: 5mm;
-  padding-bottom: 3mm;
 }
+
 img.targetLogo {
   max-width: 50px;
   max-height: 50px;
 }
+
 button.sameDayDelivery {
   font-size: 16px;
   background: rgb(204, 2, 0);

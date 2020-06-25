@@ -53,15 +53,15 @@ span select {
     background-color: none;
   }
 
-
-
   button.navLeftSide {
     margin-top: -2mm;
     background-color: none;  
     background: none;
     color: rgb(80, 75, 75);
-    font-size: 11px;    
-  }
+    font-size: 11px;
+    border: none;
+} 
+
   button.navLeftSide div span {
     font-weight: lighter;
   }

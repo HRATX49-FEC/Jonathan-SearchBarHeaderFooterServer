@@ -2,10 +2,11 @@ const mysql = require('mysql');
 const bodyparser = require('body-parser');
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'password123',
-  database: 'prrget'
+  host: process.env.RDS_HOSTNAME || 'localhost',
+  user: process.env.RDS_USERNAME || 'root',
+  password: process.env.RDS_PASSWORD || 'password123',
+  database: process.env.DB_NAME || 'prrget',
+  port: process.env.RDS_PORT || 3306,
 } );
 
 
