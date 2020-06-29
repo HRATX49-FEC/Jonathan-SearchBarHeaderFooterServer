@@ -34,10 +34,10 @@ const getCats = (params, cb) => {
 const getCart = (cb) => {
   connection.query('select * from cart', (err, results) => {
     if(err) {
-      console.log(err);
+      console.log('error get cart DB: ', err);
       cb(err, null);
     } else {
-      console.log(results);
+      console.log('cart from db: ', results);
       cb(null, results);
     }
   })

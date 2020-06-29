@@ -12,7 +12,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-
     this.state = {
       cats: [],
       shopOrCheckout: false,
@@ -22,6 +21,7 @@ class App extends React.Component {
       toggleCart: false,
       cartData: [],
       cartQuantity: '',
+      //test dummy data for adding to cart
       catTestAddToCart: {
         catName: 'Pizza',
         price: 446
@@ -44,14 +44,15 @@ class App extends React.Component {
   }
 
   componentDidMount () {
+    //mounting cart as target site has cookies that remembers 
+    //when you've put something in the cart on last site visit
     this.getCart();
-    console.log('component mounts')
+    console.log('component mounted')
   }
 
   getCat(event) {
     var name = this.state.catName || event.target.value;
-    console.log('get request cat name: ', name);
-    axios.get(`/api/search/${name}`)
+    axios.get(`/search/${name}`)
       .then(res => {
         console.log(res);
         this.setState({
@@ -64,10 +65,12 @@ class App extends React.Component {
         console.log('axios error getting cats: ', err);
       })
   }
-
+  //gets the cart items from database
+    //sets the quantity to display
   getCart() {
-    axios.get('api/cart')
+    axios.get('/search/cart/cats')
       .then(res => {
+        console.log('axios get results: ', res.data)
         this.setState({
           cartData: res.data,
           cartQuantity: res.data.length
@@ -77,9 +80,10 @@ class App extends React.Component {
         console.log('axios error getting cart data: ', err);
       })
   }
-
+  //this is rendering test dummy data right now
+    //will update once combined with everyone's services
   addToCart(catObj) {
-    axios.post('api/cart', {
+    axios.post('/search/cart', {
       catName: catObj.catName,
       price: catObj.price
     })
@@ -98,8 +102,7 @@ class App extends React.Component {
 
   deleteFromCart(event) {
     const catId = event.target.value;
-
-    axios.delete(`/api/cart/${catId}`)
+    axios.delete(`/search/cart/${catId}`)
       .then(res => {
         this.getCart()
       })
@@ -123,7 +126,7 @@ class App extends React.Component {
       catName: event.target.value,
     })
   }
-
+// functions for Category, searchbar and shopping cart below
   searchDropAnimation () {
     this.setState ({
       searchDrop: true,
@@ -177,6 +180,7 @@ class App extends React.Component {
 
 
   render() {
+    //renders the dropdown menus/cart feature once clicked
     var renderSearchDrop = '';
     var renderCategoryDrop = '';
     var renderConfirmShopMenu = '';
@@ -209,16 +213,17 @@ class App extends React.Component {
         <div>
           <Navbar />
         </div>
+          <ShoppingCart
+            deleteCat={this.deleteFromCart}
+            data={this.state.cartData}
+            toggleCart={this.state.toggleCart}
+            cartDropFade={this.cartDropFade}
+            cartQty={this.state.cartQuantity}
+          />
         {renderSearchDrop}
         {renderCategoryDrop}
-        <ShoppingCart
-              deleteCat={this.deleteFromCart}
-              data={this.state.cartData}
-              toggleCart={this.state.toggleCart}
-              cartDropFade={this.cartDropFade}
-              cartQty={this.state.cartQuantity}
-            />
         <div>
+          {/* TEST BUTTON FOR ADDING TO CART--- WILL REMOVE ONCE ALL SERVICES HAVE BEEN DEPLOYED */}
           <button onClick={() => this.addToCart(this.state.catTestAddToCart)}>Add Cat to Cart</button>
         </div>
         {renderConfirmShopMenu}

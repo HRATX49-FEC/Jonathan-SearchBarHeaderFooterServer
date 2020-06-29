@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, './client/dist/')));
 app.use(bodyparser.urlencoded( {extended: true}));
 app.use(bodyparser.json());
 
-app.get(`/api/search/:catName`, (req, res) => {
+app.get(`/search/:catName`, (req, res) => {
     var params = [req.params.catName];
     console.log(params);
 
@@ -24,7 +24,7 @@ app.get(`/api/search/:catName`, (req, res) => {
   })
 });
 
-app.get(`/api/cart`, (req, res) => {
+app.get(`/search/cart/cats`, (req, res) => {
   query.getCart((err, results) => {
     if(err) {
         console.log('error getting from server: ', err)
@@ -35,7 +35,7 @@ app.get(`/api/cart`, (req, res) => {
   })
 });
 
-app.post(`/api/cart`, (req, res) => {
+app.post(`/search/cart`, (req, res) => {
   params=[req.body.catName, req.body.price];
   console.log(params);
   query.postCatToCart(params,(err, results) => {
@@ -48,7 +48,7 @@ app.post(`/api/cart`, (req, res) => {
   })
 });
 
-app.delete(`/api/cart/:catId`, (req, res) => {
+app.delete(`/search/cart/:catId`, (req, res) => {
   params=[req.params.catId];
   console.log(params);
   query.deleteCatFromCart(params,(err, results) => {
