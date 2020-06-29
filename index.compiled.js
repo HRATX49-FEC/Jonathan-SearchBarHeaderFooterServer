@@ -17,7 +17,7 @@ app.use(bodyparser.urlencoded({
   extended: true
 }));
 app.use(bodyparser.json());
-app.get("/api/search/:catName", function (req, res) {
+app.get("/search/:catName", function (req, res) {
   var params = [req.params.catName];
   console.log(params);
   query.getCats(params, function (err, results) {
@@ -29,7 +29,7 @@ app.get("/api/search/:catName", function (req, res) {
     }
   });
 });
-app.get("/api/cart", function (req, res) {
+app.get("/search/cart/cats", function (req, res) {
   query.getCart(function (err, results) {
     if (err) {
       console.log('error getting from server: ', err);
@@ -39,7 +39,7 @@ app.get("/api/cart", function (req, res) {
     }
   });
 });
-app.post("/api/cart", function (req, res) {
+app.post("/search/cart", function (req, res) {
   params = [req.body.catName, req.body.price];
   console.log(params);
   query.postCatToCart(params, function (err, results) {
@@ -51,7 +51,7 @@ app.post("/api/cart", function (req, res) {
     }
   });
 });
-app["delete"]("/api/cart/:catId", function (req, res) {
+app["delete"]("/search/cart/:catId", function (req, res) {
   params = [req.params.catId];
   console.log(params);
   query.deleteCatFromCart(params, function (err, results) {
