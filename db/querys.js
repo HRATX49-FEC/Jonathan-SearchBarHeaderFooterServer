@@ -3,9 +3,10 @@ const bodyparser = require('body-parser');
 
 const connection = mysql.createConnection({
   host: process.env.RDS_HOSTNAME || 'localhost',
-  user: 'root',
+  user: process.env.RDS_USERNAME || 'root',
   password: process.env.RDS_PASSWORD || 'password123',
-  database: 'prrget'
+  database: process.env.RDS_DB_NAME || 'prrget',
+  port: process.env.RDS_HOSTNAME || 3306
 } );
 
 
