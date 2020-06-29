@@ -1,7 +1,6 @@
 import React from 'react';
-import userIcon from '../images/SignIn.png';
 
-const Searchbar = ({searchDropdown, categoryDropdown, getSearchedCat, catChange, cats}) => {
+const Searchbar = ({searchDropFade, cartQty, cartDropDown, searchDropdown, categoryDropdown, getSearchedCat, catChange, cats}) => {
 
   return (
 
@@ -35,7 +34,7 @@ const Searchbar = ({searchDropdown, categoryDropdown, getSearchedCat, catChange,
         </li>
 
             {/* SEARCH BAR */}
-        <li className="searchBarWrap">
+        <span className="searchBarWrap">
           <form className="form" onSubmit={(event) => getSearchedCat(event)}>
             <input
               onClick={() => searchDropdown()}
@@ -54,7 +53,8 @@ const Searchbar = ({searchDropdown, categoryDropdown, getSearchedCat, catChange,
               <span className="glyphicon glyphicon-search"/>
             </span>
           </form>
-          </li>
+        </span>
+         
 
           <li className="rightSide">
                     {/* user icon image */}
@@ -65,15 +65,18 @@ const Searchbar = ({searchDropdown, categoryDropdown, getSearchedCat, catChange,
               >
               </img>
             </span>
-                  {/* shopping cart image */}
+            {/* shopping cart image */}
             <span className="shoppingCart">
                 <img className="shoppingCart"
                       src="https://prrgetsearchbarfooter.s3.amazonaws.com/shoppingCart.png"
                       alt="shopping cart"
+                      onClick={() => cartDropDown()}
                 >
                 </img>
+                <span className="cartQty">{cartQty}</span>
             </span>
-          </li>
+        </li>
+
         
       </nav>
     </div>

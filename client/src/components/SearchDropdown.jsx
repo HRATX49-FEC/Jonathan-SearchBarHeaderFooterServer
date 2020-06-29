@@ -1,40 +1,55 @@
 import React from 'react';
 
 
-const SearchDropdown = ({searchDrop, getSuggestedCat}) => {
+const SearchDropdown = ({searchDrop, getCat}) => {
 
   return(
-    <div className="searchDropdown"
+    <div className="dropDown"
     onClick={() => searchDrop()}>
         <ul className="searchDropMenu">
           <li className="row">
           <div className="CatSuggestions">Cat Suggestions</div>
           <div className="topBorder"></div>
-            <div className="catRows" value="walnut" onClick={(event) => getSuggestedCat(event.target)}>
+            <button  
+              className="catRows" 
+              onClick={(event) => getCat(event)}
+              value='walnut'
+              >
                Walnut
             
-            </div>
+            </button>
           </li>
           <li className="row">
           <div className="topBorder"></div>
-            <div className="catRows" value="gizmo" onClick={(event) => getSuggestedCat(event.target.value)}>
+            <button 
+              className="catRows" 
+              value="gizmo"
+              onClick={(event) => getCat(event)}
+              >
               Gizmo
               
-            </div>
+            </button>
           </li>
           <li className="row">
           <div className="topBorder"></div>
-            <div className="catRows">
+            <button 
+              className="catRows"
+              onClick={(event) => getCat(event)}
+              value='Tuxedo'
+            >
              Tuxedo
-              
-            </div>
+            </button>
           </li>
+
           <li className="row">
           <div className="topBorder"></div>
-            <div className="catRowsLast">
-               Taco
-              
-            </div>
+            <button 
+              className="catRows"
+              onClick={(event) => getCat(event)}
+              value='Luna'
+            >
+               Luna
+            </button>
           </li>
         </ul>
     </div>

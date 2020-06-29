@@ -3,17 +3,31 @@ import Searchbar from "./components/Searchbar.jsx";
 import SearchDropdown from "./components/SearchDropdown.jsx";
 import CategoryDropdown from "./components/CategoryDropdown.jsx";
 import Navbar from "./components/Navbar.jsx";
+import ShoppingCart from "./components/ShoppingCart.jsx";
+import dummyData from "./dummyData.js"
+import ShopOrCheckOut from './ShopOrCheckOut.js';
 
 const axios = require('axios');
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
+
     this.state = {
       cats: [],
-      catName: 'walnut',
+      shopOrCheckout: false,
+      catName: '',
       searchDrop: false,
-      categoryDrop: false
+      categoryDrop: false,
+      toggleCart: false,
+      cartData: dummyData,
+      cartQuantity: '',
+      catTestAddToCart: {
+        catName: 'Pizza',
+        price: 446
+      }
+
     };
     this.getCat = this.getCat.bind(this);
     this.onCatNameChange = this.onCatNameChange.bind(this);
@@ -22,27 +36,79 @@ class App extends React.Component {
     this.searchDropFade = this.searchDropFade.bind(this);
     this.categoryDropAnimation = this.categoryDropAnimation.bind(this);
     this.categoryDropFade = this.categoryDropFade.bind(this);
-    // this.getSuggestedCat = this.getSuggestedCat.bind(this);
-
+    this.cartDropDown = this.cartDropDown.bind(this);
+    this.cartDropFade = this. cartDropFade.bind(this);
+    this.getCart = this.getCart.bind(this);
+    this.addToCart = this.addToCart.bind(this);
+    this.deleteFromCart = this.deleteFromCart.bind(this);
+    this.confirmShopFade = this.confirmShopFade.bind(this);
   }
 
   componentDidMount () {
-    this.getCat();
+    this.getCart();
     console.log('component mounts')
-
   }
-  getCat () {
-    var name = this.state.catName;
+
+  getCat(event) {
+    var name = this.state.catName || event.target.value;
     console.log('get request cat name: ', name);
-    axios.get(`/api/search/${this.state.catName}`)
+    axios.get(`/api/search/${name}`)
       .then(res => {
         console.log(res);
         this.setState({
-          cats: res.data
+          cats: res.data,
+          searchDrop: false,
+          catName: ''
         })
       })
       .catch(err => {
         console.log('axios error getting cats: ', err);
+      })
+  }
+
+  getCart() {
+    axios.get('api/cart')
+      .then(res => {
+        this.setState({
+          cartData: res.data,
+          cartQuantity: res.data.length
+        })
+      })
+      .catch(err => {
+        console.log('axios error getting cart data: ', err);
+      })
+  }
+
+  addToCart(catObj) {
+    axios.post('api/cart', {
+      catName: catObj.catName,
+      price: catObj.price
+    })
+      .then(res => {
+        this.getCart();
+      })
+      .then(res => {
+        this.setState ({
+          shopOrCheckout: true
+        })
+      })
+      .catch(err => {
+        console.log('axios error posting to cart: ', err);
+      })
+  }
+
+  deleteFromCart(event) {
+    const catId = event.target.value;
+
+    axios.delete(`/api/cart/${catId}`)
+      .then(res => {
+        this.getCart()
+      })
+      .then(res =>{
+        this.cartDropDown();
+      })
+      .catch(err=>{
+        console.log(err);
       })
   }
 
@@ -51,57 +117,79 @@ class App extends React.Component {
     this.getCat();
   }
 
-  // getSuggestedCat (event) {
-  //   event.preventDefault();
-  //   console.log(event);
-  //   this.getCat(event)
-  // }
-
   onCatNameChange (event) {
     console.log(this.state.catName);
     event.preventDefault();
     this.setState ({
-      catName: event.target.value
+      catName: event.target.value,
     })
   }
 
-  searchDropAnimation (event) {
-    setTimeout(() => {
+  searchDropAnimation () {
     this.setState ({
       searchDrop: true,
       categoryDrop: false,
-    })}, 200);
+      toggleCart: false,
+      shopOrCheckout: false
+    })
   }
 
-  searchDropFade (event) {
+  searchDropFade () {
     this.setState ({
       searchDrop: false
     })
   }
 
-  categoryDropAnimation (event) {
-    setTimeout(() => {
-      this.setState ({
-        categoryDrop: true,
-        searchDrop: false
-      })}, 200);
-  }
-
-  categoryDropFade (event) {
+  confirmShopFade () {
     this.setState ({
-      categoryDrop: false
-
+      shopOrCheckout: false
     })
   }
+
+  categoryDropAnimation () {
+      this.setState ({
+        categoryDrop: true,
+        searchDrop: false,
+        toggleCart: false,
+        shopOrCheckout: false
+      })
+  }
+
+  categoryDropFade () {
+    this.setState ({
+      categoryDrop: false
+    })
+  }
+
+  cartDropDown () {
+      this.setState ({
+        toggleCart: true,
+        searchDrop: false,
+        categoryDrop: false,
+        shopOrCheckout: false
+      })
+  }
+
+  cartDropFade () {
+    this.setState ({
+      toggleCart: false
+    })
+  }
+
 
   render() {
     var renderSearchDrop = '';
     var renderCategoryDrop = '';
+    var renderConfirmShopMenu = '';
     if(this.state.searchDrop === true) {
-      renderSearchDrop = <SearchDropdown getSuggestedCat={this.getSuggestedCat} searchDrop={this.searchDropFade} />
+      renderSearchDrop = <SearchDropdown getCat={this.getCat} searchDrop={this.searchDropFade} />
     }
     if(this.state.categoryDrop === true) {
       renderCategoryDrop = <CategoryDropdown categoryDropFade={this.categoryDropFade} />
+    }
+    if(this.state.shopOrCheckout === true) {
+      renderConfirmShopMenu = <ShopOrCheckOut exit={this.confirmShopFade} renderCart={this.cartDropDown}/>
+
     }
 
     return (
@@ -113,14 +201,28 @@ class App extends React.Component {
             getSearchedCat={this.getSearchedCat}
             getCat={this.getCat}
             catChange={this.onCatNameChange}
+            cartDropFade={this.cartDropFade}
+            cartDropDown={this.cartDropDown}
+            toggleCart={this.toggleCart}
+            cartQty={this.state.cartQuantity}
           />
         </div>
         <div>
           <Navbar />
         </div>
-        <div>{renderSearchDrop}</div>
-        <div>{renderCategoryDrop}</div>
-
+        {renderSearchDrop}
+        {renderCategoryDrop}
+        <ShoppingCart
+              deleteCat={this.deleteFromCart}
+              data={this.state.cartData}
+              toggleCart={this.state.toggleCart}
+              cartDropFade={this.cartDropFade}
+              cartQty={this.state.cartQuantity}
+            />
+        <div>
+          <button onClick={() => this.addToCart(this.state.catTestAddToCart)}>Add Cat to Cart</button>
+        </div>
+        {renderConfirmShopMenu}
       </div>
     );
   }

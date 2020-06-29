@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+img.carCat {
+  image-rendering: optimizeSpeed;
+}
+
 div.navWrapper {
   /* margin-top: -4mm; */
   background-color: rgb(204, 2, 0);
@@ -48,7 +52,36 @@ select.selectArrow {
   border: none;
   color: white;
 }
+/* cart dropdown */
+ul.cartDropMenu {
+  padding: 12px 16px;
+  top: 20%;
+  z-index: 1000;
 
+  border: 1.2mm;
+  background: white;
+  font-size: 19px;
+  color: rgb(51,51,51);
+  width: 30%;
+  position: relative;
+  left: 40%;
+}
+
+
+div.dropDown {
+  background: rgba(0, 0, 0, 0.7);
+  color: rgb(51,51,51);
+  z-index: 1000;
+
+  position: fixed;
+  transition: all 1s ease;
+  top: 75px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+/* category Drop Down  */
 ul.categoryDropMenu {
   padding: 12px 16px;
   margin-top: -2.5mm;
@@ -60,18 +93,8 @@ ul.categoryDropMenu {
   width: 20%;
   position: relative;
   left: 0%;
-}
-/* --gradient background of dropdowns  */
+  z-index: 1000;
 
-div.searchDropdown {
-  background: rgba(0, 0, 0, 0.7);
-  padding-bottom: 30cm;
-  margin-top: -36px;
-}
-div.categoryDropdown {
-  background: rgba(0, 0, 0, 0.7);
-  padding-bottom: 30cm;
-  margin-top: -36px;
 }
 
 ul.searchDropMenu {
@@ -79,18 +102,20 @@ ul.searchDropMenu {
   border-bottom-left-radius: 1.2mm;
   border-bottom-right-radius: 1.2mm;
   background: white;
+  z-index: 1000;
+
   font-size: 19px;
   color: rgb(51,51,51);
   width: 30%;
   position: relative;
   left: 50%;
-  margin-top: -2.5mm;
+  margin-top: 0mm;
 
 }
 
 li.row {
   list-style-type: none;
-  padding-top: 6.3mm;
+  padding-top: 2mm;
 }
 div.topBorder{
   border-top: 1px;
@@ -108,21 +133,85 @@ div.CatSuggestions {
   padding-bottom: 4mm;
 }
 
-div.catRows {
+.catRows {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
-  padding: 1mm;
-  padding-left: 5mm;
-  margin-top: 1mm;
-  margin-bottom: -4mm;
+  padding: 0mm;
+  padding-left: 6mm;
+  margin-top: 2mm;
+  margin-bottom: 2mm;
+  border: none;
+  background-color: transparent;
 }
 
-div.catRowsLast {
+h2.CartTitle {
+  text-align: center;
+  font-size: 20px;
+}
+span.cartItemName {
+  padding-right: 4mm;
+}
+span.pickup {
+  padding-right: 4mm;
+}
+span.ship {
+  padding-right: 4mm;
+}
+span.cartItemPrice {
+  padding-right: 4mm;
+}
+div.cartItem {
+  padding: 2mm;
+  font-size: 16px;
+}
+button.removeCat {
+  background-color: rgb(204, 2, 0);
+  color: white;
+  font-size: 9px;
+  display: inline-block;
+  text-align: right;
+  border-radius: 4mm;
+  border-color: rgb(204, 2, 0);
+  border-radius: 5px;
+  box-shadow: 0px 5px 0px grey;
+}
+button.removeCat:hover {
+  cursor: pointer;
+  box-shadow: 0 3px 0 grey;
+  top: 3px;
+
+}
+div.shopOrCheckout {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  width: 500px;
+  height: 400px;
+  background-color: white;
+  /* text-align: center; */
+}
+button.shopConfirmButtons {
+  left: 30%;
+  top: 50%;
+  font-size: large;
+  text-align: center;
+  padding-right: 10mm;
+}
+
+li.totalCost {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
-  padding: 1mm;
-  padding-left: 5mm;
-  margin-top: 1mm;
+  font-weight: bold;
+  padding: 0mm;
+  padding-left: 6mm;
+  margin-top: 2mm;
+  margin-bottom: 2mm;
+  list-style: none;
+  text-align: right;
+}
+button.catRows:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 form.form {
@@ -166,7 +255,7 @@ li.leftSide span#left {
   box-sizing: inherit;
   -webkit-box-align: center;
   align-items: center;
-  left: 7%;
+  left: 10%;
   position: relative;
   margin-left: 20px;
   margin-right: 32px;
@@ -190,6 +279,31 @@ input.search {
 img.shoppingCart {
   max-width: 40px;
   max-height: 40px;
+}
+span.shoppingCart:active {
+  border-color: white;
+  border-style: dashed;
+  border-width: 1px;
+  border-radius: 2mm;
+}
+span.shoppingCart:hover {
+  cursor: pointer;
+}
+span.cartQty {
+  color: white;
+  margin-left: -8px;
+  font-weight: bold;
+  position: absolute;
+  top: 2%;
+  font-size: 12px;
+}
+span.cartContents {
+  padding-left: 10mm;
+  height: 50px;
+  font-size: 20px;
+  color: red;
+  font-weight: bolder;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 img.userIcon {
@@ -223,18 +337,19 @@ button.sameDayDelivery {
 
 span.shoppingCart {
   padding-left: 6mm;
+  padding-right: 6mm;
   padding-top: 1.5mm;
-  padding-bottom: 0mm;
+  padding-bottom: 1mm;
 }
 
-.rightSide {
-  margin-top: 2mm;
-  margin-left: 18mm;
+li.rightSide {
+  margin-top: 1mm;
+  margin-left: 8mm;
   display: inline-flex;
   border: none;
   justify-content: center;
   position: relative;
-  padding-left: 25mm;
+  padding-left: 42mm;
 }
 
 
@@ -260,60 +375,69 @@ span.shoppingCart {
   /* //the search bar moves overflow:  */ 
   .searchBarWrap {
     width: 98%;
-    left: -3%;
-    margin-right: -21px;
-  
-  }
-  
-  input.search {
-    border-radius: 5mm;
-    padding-top: 3mm;
-    padding-bottom: 3mm;
-    padding-left: 4mm;
-    border-style: none;
-    font-size: 16px;
-    border-color: none;
-    width: 100%;
+    margin-right: 20px;
+    justify-content: flex-start;
+    box-sizing: inherit;
+    -webkit-box-align: center;
+    align-items: center;
+    left: 6%;
     position: relative;
-    display: inline-block;
+    margin-left: 20px;
+  
   }
+ 
 
   span.shoppingCart {
     padding-left: 6mm;
     padding-top: 1.5mm;
     padding-bottom: 0mm;
   }
-  
-  .rightSide {
-    margin-top: 1mm;
-    padding-left: 0mm;
-    margin-left: 4mm;
-    display: inline-flex;
-    border: none;
-    justify-content: center;
-    position: relative;
-  }
 
   select#deleteOnMobile {
     color:  rgb(204, 2, 0);
   }
 
-  ul.searchDropMenu {
-    padding: 12px 16px;
-    border-bottom-left-radius: 1.2mm;
-    border-bottom-right-radius: 1.2mm;
-    background: white;
-    font-size: 19px;
-    color: rgb(51,51,51);
-    width: 20%;
-    position: relative;
-    left: 49%;
-    margin-top: -2.5mm;
-  }
   img.userIcon {
     max-width: 0px;
     max-height: 0px;
   }
+  li.rightSide{
+    padding-left: 0;
+    display: inline-flex;
+    border: none;
+    justify-content: center;
+    position: relative;
+    padding-left: -0;
+    width: 50px;
+    }
+
+  @media only screen and (max-width: 600px) {
+    li.rightSide{
+      padding-left: 0;
+      width: 50px;
+      margin-left: 0mm;
+      display: inline-flex;
+      border: none;
+      justify-content: center;
+      position: relative;
+      padding-left: -0;
+      }
+
+    .searchBarWrap {
+      width: 300px;
+      /* margin-right: -21px; */
+      margin-right: -10px;
+
+      justify-content: flex-start;
+      box-sizing: inherit;
+      -webkit-box-align: center;
+      align-items: center;
+      left: -2%;
+      position: relative;
+      margin-left: 0px;
+      /* margin-right: 32px; */
+    
+    }
 
 }
 

@@ -4,7 +4,7 @@ import React from 'react';
 const CategoryDropdown = ({categoryDropFade}) => {
 
   return(
-    <div className="categoryDropdown"
+    <div className="dropDown"
     onClick={() => categoryDropFade()}>
         <div className="columnArrow"/>
         <ul className="categoryDropMenu">
@@ -32,7 +32,7 @@ const CategoryDropdown = ({categoryDropFade}) => {
           </li>
           <li className="row">
           <div className="topBorder"></div>
-            <div className="catRowsLast">
+            <div className="catRows">
                Adorable
               
             </div>

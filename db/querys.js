@@ -3,10 +3,9 @@ const bodyparser = require('body-parser');
 
 const connection = mysql.createConnection({
   host: process.env.RDS_HOSTNAME || 'localhost',
-  user: process.env.RDS_USERNAME || 'root',
+  user: 'root',
   password: process.env.RDS_PASSWORD || 'password123',
-  database: process.env.DB_NAME || 'prrget',
-  port: process.env.RDS_PORT || 3306,
+  database: 'prrget'
 } );
 
 
@@ -14,7 +13,7 @@ connection.connect(err => {
   if(err) {
     console.log(`couldnt connect to database`)
   } else {
-    console.log('connected to mysql database')
+    console.log(`connected to mysql database`)
   }
 });
 
@@ -32,6 +31,46 @@ const getCats = (params, cb) => {
   })
 };
 
+const getCart = (cb) => {
+  connection.query('select * from cart', (err, results) => {
+    if(err) {
+      console.log(err);
+      cb(err, null);
+    } else {
+      console.log(results);
+      cb(null, results);
+    }
+  })
+};
+
+const postCatToCart = (params, cb) => {
+  connection.query('insert into cart(catName,price) VALUES (?,?)', params, (err, results) => {
+    if(err) {
+      console.log(err);
+      cb(err, null);
+    } else {
+      console.log(results);
+      cb(null, results);
+    }
+  })
+};
+
+const deleteCatFromCart = (params, cb) => {
+
+  connection.query('delete from cart where id = (?)', params, (err, results) => {
+    if(err) {
+      console.log(err);
+      cb(err, null);
+    } else {
+      console.log(results);
+      cb(null, results);
+    }
+  })
+}
+
 module.exports = {
-  getCats
+  getCats,
+  getCart,
+  postCatToCart,
+  deleteCatFromCart
 }
