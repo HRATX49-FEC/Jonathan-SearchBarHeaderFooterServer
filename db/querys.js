@@ -6,7 +6,7 @@ const connection = mysql.createConnection({
   user: process.env.RDS_USERNAME || 'root',
   password: process.env.RDS_PASSWORD || 'password123',
   database: 'prrget',
-  port: process.env.RDS_HOSTNAME || 3306
+  port: process.env.PORT || 3306
 } );
 
 
