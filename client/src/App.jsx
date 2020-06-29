@@ -4,7 +4,6 @@ import SearchDropdown from "./components/SearchDropdown.jsx";
 import CategoryDropdown from "./components/CategoryDropdown.jsx";
 import Navbar from "./components/Navbar.jsx";
 import ShoppingCart from "./components/ShoppingCart.jsx";
-import dummyData from "./dummyData.js"
 import ShopOrCheckOut from './ShopOrCheckOut.js';
 
 const axios = require('axios');
@@ -21,7 +20,7 @@ class App extends React.Component {
       searchDrop: false,
       categoryDrop: false,
       toggleCart: false,
-      cartData: dummyData,
+      cartData: [],
       cartQuantity: '',
       catTestAddToCart: {
         catName: 'Pizza',
