@@ -13,11 +13,13 @@ div.navWrap{
     border-color: rgb(114, 109, 109);
     border-bottom-style: solid; */
   }
-span.navRightSide {
+ul.navRightSide {
   position: absolute;
-  left: 62%;
-  padding-top: 1mm;
+  right: 3%;
   color: rgb(80, 75, 75);
+  display: box;
+  list-style: none;
+  top: 7.5%;
 
 }
 
@@ -25,15 +27,27 @@ span.locationButton {
   padding-left: 2mm;
 }
 
-span.navRightSide span {
-  padding-left: 2mm;
+li#rightSide {
+  padding-left: 1mm;
   padding-right: 2mm;
+  display: inline-flex;
+  white-space: nowrap;
 }
-span.navRightSide span:hover {
+li#heart {
+  padding-left: 1mm;
+  padding-right: 2mm;
+  display: inline-flex;
+  white-space: nowrap;
+}
+li#heart:hover {
   cursor: pointer;
 }
+li#rightSide:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
 
-span select {
+select.selectTag {
   border: none;
   background-color: none;
   background: none;
@@ -47,22 +61,22 @@ span select {
     text-align: center;
     text-align: left;
   }
-  span.deleteWMobile {
+  li.deleteWMobile {
     background: none;
     color: none;
     background-color: none;
   }
-
-
 
   button.navLeftSide {
     margin-top: -2mm;
     background-color: none;  
     background: none;
     color: rgb(80, 75, 75);
-    font-size: 11px;    
-  }
-  button.navLeftSide div span {
+    font-size: 11px;
+    border: none;
+} 
+
+  button.navLeftSide div span.leftSide {
     font-weight: lighter;
   }
   div.location {
@@ -70,26 +84,21 @@ span select {
     font-size: 13px; 
     text-align: left;
   }
-  span.time {
+  span#time {
     color: green;
   }
 
-  @media only screen and (max-width: 1500px) {
+  @media only screen and (max-width: 1000px) {
 
-    span.navRightSide {
-      position: absolute;
-      left: 65%;
-      padding-top: 3mm;
+    li#rightSide {
+      padding-left: 0mm;
+      padding-right: 1mm;
     }
 
-    span.deleteWMobile {
+    li.deleteWMobile {
       padding: 0;
       padding-left: 0;
       padding-right: 0;
       font-size: 0px;
-    }
-    span.navRightSide span {
-      padding-left: 1mm;
-      padding-right: 0mm;
     }
   }

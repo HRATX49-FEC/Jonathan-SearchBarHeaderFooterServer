@@ -22,10 +22,20 @@ create table cats(
 
 );
 
+create table cart(
+  id INT Auto_increment primary key,
+  catName varchar(255) not null UNIQUE,
+  price int not null
+);
+
 insert into categories(category) VALUES ('Floof');
 insert into categories(category) VALUES ('Chonk');
 insert into categories(category) VALUES ('Hairless');
 insert into categories(category) VALUES ('Adorable');
+
+insert into cart(catName,price) VALUES ('Luna', 999.99);
+insert into cart(catName,price) VALUES ('Walnut', 77777.99);
+insert into cart(catName,price) VALUES ('Gizmo', 569.99);
 
 
 -- THE MAIN CATS

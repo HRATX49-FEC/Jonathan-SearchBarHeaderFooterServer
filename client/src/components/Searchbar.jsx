@@ -1,10 +1,6 @@
 import React from 'react';
-import catLogo from '../images/catTargetLogo.png';
-import userIcon from '../images/SignIn.png';
-import shoppingCart from '../images/shoppingCart.png';
 
-
-const Searchbar = ({searchDropdown, categoryDropdown, getSearchedCat, catChange, cats}) => {
+const Searchbar = ({searchDropFade, cartQty, cartDropDown, searchDropdown, categoryDropdown, getSearchedCat, catChange, cats}) => {
 
   return (
 
@@ -14,7 +10,7 @@ const Searchbar = ({searchDropdown, categoryDropdown, getSearchedCat, catChange,
         <span className="targetLogo">
           {/* TARGET LOGO IMAGE */}
           <img className="targetLogo"
-            src={catLogo}
+            src="https://prrgetsearchbarfooter.s3.amazonaws.com/catTargetLogo.png"
             alt="cat prrget logo"
           />
         </span>
@@ -22,23 +18,23 @@ const Searchbar = ({searchDropdown, categoryDropdown, getSearchedCat, catChange,
             {/* CATEGORY DROP DOWN */}
       
         <li className="leftSide" >
-          <span className="category" onClick={() => categoryDropdown()}>
+          <span id="left" className="category" onClick={() => categoryDropdown()}>
             Categories
             <select className="selectArrow"></select>
           </span>
           
             {/* on Mobile Delete options */}
-          <span className="deals">Deals
+          <span id="left"  className="deals">Deals
             <select className="selectArrow"></select>
           </span>
-          <span className="deleteOnMobile">What's New
+          <span id="left" className="deleteOnMobile">What's New
             <select id="deleteOnMobile" className="selectArrow"></select>
           </span>
-          <span className="deleteOnMobile">Same Day Delivery</span>
+          <span id="left" className="deleteOnMobile">Same Day Delivery</span>
         </li>
 
             {/* SEARCH BAR */}
-        <li className="searchBarWrap">
+        <span className="searchBarWrap">
           <form className="form" onSubmit={(event) => getSearchedCat(event)}>
             <input
               onClick={() => searchDropdown()}
@@ -57,26 +53,30 @@ const Searchbar = ({searchDropdown, categoryDropdown, getSearchedCat, catChange,
               <span className="glyphicon glyphicon-search"/>
             </span>
           </form>
-          </li>
+        </span>
+         
 
           <li className="rightSide">
                     {/* user icon image */}
             <span className="userIcon">
               <img className="userIcon"
-                src={userIcon}
+                src="https://prrgetsearchbarfooter.s3.amazonaws.com/SignIn.png"
                 alt="users icon"
               >
               </img>
             </span>
-                  {/* shopping cart image */}
+            {/* shopping cart image */}
             <span className="shoppingCart">
                 <img className="shoppingCart"
-                      src={shoppingCart}
+                      src="https://prrgetsearchbarfooter.s3.amazonaws.com/shoppingCart.png"
                       alt="shopping cart"
+                      onClick={() => cartDropDown()}
                 >
                 </img>
+                <span className="cartQty">{cartQty}</span>
             </span>
-          </li>
+        </li>
+
         
       </nav>
     </div>

@@ -8,22 +8,22 @@ const Navbar = () => {
                 <span className="locationButton">
                     <button className="navLeftSide">
                         <div>
-                            <span className="youreShop">You're shopping </span>
-                            <span className="time">(closese at 10pm):</span>
+                            <span className="leftSide">You're shopping </span>
+                            <span id="time" className="leftSide">(closes at 10pm):</span>
                         </div>
-                        <div className="location">Austin UT Campus<select></select></div>
+                        <div className="location">Austin UT Campus<select className="selectTag"></select></div>
                     </button>
                 </span>
-                <span className="navRightSide">
-                    <span className="registry">Registry</span>
-                    <span>Weekly Ad</span>
-                    <span>RedCard</span>
-                    <span className="deleteWMobile">Gift Cards</span>
-                    <span className="deleteWMobile">Find Stores</span>
-                    <span className="deleteWMobile">Orders</span>
-                    <span className="deleteWMobile" role="img">♡</span>
-                    <span><select></select>More</span>
-                </span>
+                <ul className="navRightSide">
+                    <li id="rightSide" className="registry">Registry</li>
+                    <li id="rightSide" >Weekly Ad</li>
+                    <li id="rightSide" >RedCard</li>
+                    <li id="rightSide" className="deleteWMobile">Gift Cards</li>
+                    <li id="rightSide" className="deleteWMobile">Find Stores</li>
+                    <li id="rightSide" className="deleteWMobile">Orders</li>
+                    <li id="heart" className="deleteWMobile" role="img">♡</li>
+                    <li id="rightSide" ><select className="selectTag"></select>More</li>
+                </ul>
             </nav>
         </div>
     )
