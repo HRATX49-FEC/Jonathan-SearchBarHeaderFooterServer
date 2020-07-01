@@ -35,9 +35,9 @@ app.get(`/search/cart/cats`, (req, res) => {
   })
 });
 
-app.post(`/search/cart`, (req, res) => {
+app.post(`/search/cart/delete/post`, (req, res) => {
   params=[req.body.catName, req.body.price];
-  console.log(params);
+  console.log('post to cat cart: ', params);
   query.postCatToCart(params,(err, results) => {
     if(err) {
         console.log('error getting from server: ', err)
@@ -48,7 +48,7 @@ app.post(`/search/cart`, (req, res) => {
   })
 });
 
-app.delete(`/search/cart/:catId`, (req, res) => {
+app.get(`/search/cart/delete/:catId`, (req, res) => {
   params=[req.params.catId];
   console.log(params);
   query.deleteCatFromCart(params,(err, results) => {

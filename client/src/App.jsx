@@ -5,7 +5,9 @@ import CategoryDropdown from "./components/CategoryDropdown.jsx";
 import Navbar from "./components/Navbar.jsx";
 import ShoppingCart from "./components/ShoppingCart.jsx";
 import ShopOrCheckOut from './ShopOrCheckOut.js';
+import catDelivery from './images/catDelivery.gif';
 
+const $ = require('jquery');
 const axios = require('axios');
 
 class App extends React.Component {
@@ -15,6 +17,7 @@ class App extends React.Component {
     this.state = {
       cats: [],
       shopOrCheckout: false,
+      deliverCat: false,
       catName: '',
       searchDrop: false,
       categoryDrop: false,
@@ -41,13 +44,19 @@ class App extends React.Component {
     this.addToCart = this.addToCart.bind(this);
     this.deleteFromCart = this.deleteFromCart.bind(this);
     this.confirmShopFade = this.confirmShopFade.bind(this);
+    this.onCheckoutClick = this.onCheckoutClick.bind(this);
+    this.catDeliverFade = this.catDeliverFade.bind(this);
   }
 
   componentDidMount () {
     //mounting cart as target site has cookies that remembers 
     //when you've put something in the cart on last site visit
     this.getCart();
-    console.log('component mounted')
+    console.log('component mounted');
+    $('body').on('submit', '.search', (e) => {
+      console.log('event listener')
+      this.getCat(e.target.value);
+    });
   }
 
   getCat(event) {
@@ -83,7 +92,7 @@ class App extends React.Component {
   //this is rendering test dummy data right now
     //will update once combined with everyone's services
   addToCart(catObj) {
-    axios.post('/search/cart', {
+    axios.post('/search/cart/delete/post', {
       catName: catObj.catName,
       price: catObj.price
     })
@@ -102,7 +111,7 @@ class App extends React.Component {
 
   deleteFromCart(event) {
     const catId = event.target.value;
-    axios.delete(`/search/cart/${catId}`)
+    axios.get(`/search/cart/delete/${catId}`)
       .then(res => {
         this.getCart()
       })
@@ -132,6 +141,17 @@ class App extends React.Component {
       searchDrop: true,
       categoryDrop: false,
       toggleCart: false,
+      shopOrCheckout: false,
+      deliverCat: false
+    })
+  }
+
+  onCheckoutClick () {
+    this.setState({
+      deliverCat: true,
+      searchDrop: false,
+      categoryDrop: false,
+      toggleCart: false,
       shopOrCheckout: false
     })
   }
@@ -153,7 +173,8 @@ class App extends React.Component {
         categoryDrop: true,
         searchDrop: false,
         toggleCart: false,
-        shopOrCheckout: false
+        shopOrCheckout: false,
+        deliverCat: false
       })
   }
 
@@ -168,13 +189,19 @@ class App extends React.Component {
         toggleCart: true,
         searchDrop: false,
         categoryDrop: false,
-        shopOrCheckout: false
+        shopOrCheckout: false,
+        deliverCat: false
       })
   }
 
   cartDropFade () {
     this.setState ({
       toggleCart: false
+    })
+  }
+  catDeliverFade () {
+    this.setState ({
+      deliverCat: false
     })
   }
 
@@ -184,6 +211,7 @@ class App extends React.Component {
     var renderSearchDrop = '';
     var renderCategoryDrop = '';
     var renderConfirmShopMenu = '';
+    var checkoutClicked = '';
     if(this.state.searchDrop === true) {
       renderSearchDrop = <SearchDropdown getCat={this.getCat} searchDrop={this.searchDropFade} />
     }
@@ -193,6 +221,14 @@ class App extends React.Component {
     if(this.state.shopOrCheckout === true) {
       renderConfirmShopMenu = <ShopOrCheckOut exit={this.confirmShopFade} renderCart={this.cartDropDown}/>
 
+    }
+    if(this.state.deliverCat === true) {
+        checkoutClicked = <div className="catDelivery" onClick={() => this.catDeliverFade()}>
+          <div className="deliveryContainer">
+          <div className="catProcessed">Success! Your Cat Is Being Processed</div>
+          <img src="https://prrgetsearchbarfooter.s3.amazonaws.com/catDelivery.gif" alt="cat delivery gif"/>
+          </div>
+          </div>
     }
 
     return (
@@ -210,10 +246,11 @@ class App extends React.Component {
             cartQty={this.state.cartQuantity}
           />
         </div>
-        <div>
+       
           <Navbar />
-        </div>
+          {checkoutClicked}
           <ShoppingCart
+            onCheckoutClick={this.onCheckoutClick}
             deleteCat={this.deleteFromCart}
             data={this.state.cartData}
             toggleCart={this.state.toggleCart}

@@ -13,14 +13,13 @@ div.navWrap{
     border-color: rgb(114, 109, 109);
     border-bottom-style: solid; */
   }
-ul.navRightSide {
+span.navRightSide {
   position: absolute;
   right: 3%;
   color: rgb(80, 75, 75);
   display: box;
-  list-style: none;
-  top: 7.5%;
-
+  list-style: none;  
+  padding-top: 5px;
 }
 
 span.locationButton {
@@ -54,7 +53,7 @@ select.selectTag {
 
 }
 
-    /* tryign to also get spacing  */
+    /* trying to also get spacing  */
   .navBarTwo {
     font-family: 'Lato', sans-serif;
     list-style: none;
@@ -101,4 +100,5 @@ select.selectTag {
       padding-right: 0;
       font-size: 0px;
     }
+    
   }
