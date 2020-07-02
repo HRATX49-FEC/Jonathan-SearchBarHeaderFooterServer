@@ -1,7 +1,10 @@
 import React from 'react';
 
-const Searchbar = ({searchDropFade, cartQty, cartDropDown, searchDropdown, categoryDropdown, getSearchedCat, catChange, cats}) => {
-
+const Searchbar = ({cartQty, cartDropDown, searchDropdown, categoryDropdown, getSearchedCat, catChange, cats}) => {
+  var cartQTY = '';
+  if(cartQty > 0) {
+    cartQTY = cartQty;
+  }
   return (
 
     <div className="navWrapper">
@@ -15,10 +18,11 @@ const Searchbar = ({searchDropFade, cartQty, cartDropDown, searchDropdown, categ
           />
         </span>
 
-            {/* CATEGORY DROP DOWN */}
-      
-        <li className="leftSide" >
-          <span id="left" className="category" onClick={() => categoryDropdown()}>
+          {/* CATEGORY DROP DOWN */}
+        <li className="leftSide">
+          <span id="left" 
+            className="category" 
+            onClick={() => categoryDropdown()}>
             Categories
             <select className="selectArrow"></select>
           </span>
@@ -54,8 +58,7 @@ const Searchbar = ({searchDropFade, cartQty, cartDropDown, searchDropdown, categ
             </span>
           </form>
         </span>
-         
-
+    
           <li className="rightSide">
                     {/* user icon image */}
             <span className="userIcon">
@@ -66,18 +69,19 @@ const Searchbar = ({searchDropFade, cartQty, cartDropDown, searchDropdown, categ
               </img>
             </span>
             {/* shopping cart image */}
-            <span className="shoppingCart">
-                <img className="shoppingCart"
-                      src="https://prrgetsearchbarfooter.s3.amazonaws.com/shoppingCart.png"
-                      alt="shopping cart"
-                      onClick={() => cartDropDown()}
+            <span 
+              className="shoppingCart"
+              onClick={() => cartDropDown()}
+              >
+                <img 
+                  className="shoppingCart"
+                  src="https://prrgetsearchbarfooter.s3.amazonaws.com/shoppingCart.png"
+                  alt="shopping cart"
                 >
                 </img>
-                <span className="cartQty">{cartQty}</span>
+                <span className="cartQty">{cartQTY}</span>
             </span>
         </li>
-
-        
       </nav>
     </div>
   )

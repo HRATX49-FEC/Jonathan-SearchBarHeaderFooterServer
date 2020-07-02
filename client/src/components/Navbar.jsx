@@ -11,7 +11,7 @@ const Navbar = () => {
                             <span className="leftSide">You're shopping </span>
                             <span id="time" className="leftSide">(closes at 10pm):</span>
                         </div>
-                        <div className="location">Austin UT Campus<select className="selectTag"></select></div>
+                        <div className="location">Austin Saltillo<select className="selectTag"></select></div>
                     </button>
                 </span>
                 <span className="navRightSide">

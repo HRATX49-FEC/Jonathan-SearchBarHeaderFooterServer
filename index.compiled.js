@@ -19,7 +19,6 @@ app.use(bodyparser.urlencoded({
 app.use(bodyparser.json());
 app.get("/search/:catName", function (req, res) {
   var params = [req.params.catName];
-  console.log(params);
   query.getCats(params, function (err, results) {
     if (err) {
       console.log('error getting from server: ', err);
@@ -38,31 +37,29 @@ app.get("/search/cart/cats", function (req, res) {
       res.status(200).send(results);
     }
   });
-});
-app.post("/search/cart/delete/post", function (req, res) {
-  params = [req.body.catName, req.body.price];
-  console.log('post to cat cart: ', params);
-  query.postCatToCart(params, function (err, results) {
-    if (err) {
-      console.log('error getting from server: ', err);
-      res.status(504);
-    } else {
-      res.status(200).send(results);
-    }
-  });
-});
-app.get("/search/cart/delete/:catId", function (req, res) {
-  params = [req.params.catId];
-  console.log(params);
-  query.deleteCatFromCart(params, function (err, results) {
-    if (err) {
-      console.log('error deleting cat from cart on server: ', err);
-      res.status(504);
-    } else {
-      res.status(200).send(results);
-    }
-  });
-});
+}); // app.post(`/search/cart/delete/post`, (req, res) => {
+//   params=[req.body.catName, req.body.price];
+//   query.postCatToCart(params,(err, results) => {
+//     if(err) {
+//         console.log('error getting from server: ', err)
+//       res.status(504);
+//     } else {
+//       res.status(200).send(results);
+//     }
+//   })
+// });
+// app.get(`/search/cart/delete/:catId`, (req, res) => {
+//   params=[req.params.catId];
+//   query.deleteCatFromCart(params,(err, results) => {
+//     if(err) {
+//         console.log('error deleting cat from cart on server: ', err)
+//       res.status(504);
+//     } else {
+//       res.status(200).send(results);
+//     }
+//   })
+// });
+
 app.listen(PORT, function () {
   console.log("connected to port: ".concat(PORT));
 });
