@@ -1,9 +1,6 @@
 import React from 'react';
-// import catget from '../images/Tarcat.png';
-// import bag from '../images/bag.png';
-// import box from '../images/box.png';
 
-const ShoppingCart = ({ togglePickup, toggleDelivery, pickup, delivery, onPromoChange, promoCode, clickApply, onCheckoutClick, data, deleteCat, cartDropFade, toggleCart, catQtyChange }) => {
+const ShoppingCart = ({ onPromoChange, promoCode, clickApply, onCheckoutClick, data, deleteCat, cartDropFade, toggleCart, catQtyChange }) => {
 
     //=====sets the shipping date to 5 days out=======//
     var shipDate = new Date();
@@ -150,8 +147,8 @@ const ShoppingCart = ({ togglePickup, toggleDelivery, pickup, delivery, onPromoC
 
                         {/* mapping function for the shopping cart items */}
                        
-                        {data.map((cat) =>
-                            <div key="111" className="cartItem" key={cat.id}>
+                        {data.map((cat, index) =>
+                            <div className="cartItem" key={index}>
 
                                 <span className="itemSpanOne">
                                     <div key={cat.id}>
