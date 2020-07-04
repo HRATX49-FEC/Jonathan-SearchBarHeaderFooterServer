@@ -52,6 +52,7 @@ select.selectArrow {
   border: none;
   color: white;
 }
+
 .discountSuccessContainer{
   position: relative;
   left: 30%;
@@ -142,6 +143,25 @@ div.dropDown {
   left: 0px;
   right: 0px;
   bottom: 0px;
+
+  animation-name: dropMenuFadeIn;
+  animation-duration: 450ms;
+}
+
+@keyframes dropMenuFadeIn {
+  0% {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    background-color:  rgba(0, 0, 0, 0.7);
+  }
+}
+
+img.arrow {
+  float: right;
+  height: 22px;
+  width: 22px;
+  margin-top: 3mm;
 }
 
 /* category Drop Down  */
@@ -158,6 +178,38 @@ ul.categoryDropMenu {
   left: 0%;
   z-index: 1000;
 
+  animation-name: categoryDropDelay;
+  animation-duration: 250ms;
+  height: 71mm;
+}
+
+
+@keyframes categoryDropDelay {
+  0% {
+    height: 0mm;
+  }
+  100% {
+    height: 71mm;
+  }
+}
+
+#categoryTitle {
+  margin-bottom: -3mm;
+}
+#categories {
+  animation-name: categoryRows;
+  animation-duration: 550ms;
+}
+#categories:hover {
+  cursor: pointer;
+}
+@keyframes categoryRows {
+  0% {
+    height: 0px;
+  }
+  100% {
+    height: 25px;
+  }
 }
 
 ul.searchDropMenu {
@@ -169,20 +221,27 @@ ul.searchDropMenu {
 
   font-size: 19px;
   color: rgb(51,51,51);
-  width: 30%;
+  width: 37%;
   position: relative;
-  left: 50%;
+  left: 43%;
   margin-top: 0mm;
 
 }
 img.tarCat {
-  height: 158px;
-  width: 137px;
+  height: 212px;
+  width: 201px;
 }
-
 li.row {
   list-style-type: none;
-  padding-top: 2mm;
+  margin-top: 2mm;
+}
+li.row:hover {
+  cursor: pointer;
+}
+
+.topBorder {
+  border-top: 1px solid rgb(214, 214, 214);
+
 }
 .itemsHeadContainer {
   background: white;
@@ -217,14 +276,16 @@ div.CatSuggestions {
   padding-left: 5mm;
   padding-bottom: 4mm;
 }
+div.CatSuggestions:hover {
+  cursor: default;
+}
 
 .catRows {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
-  padding: 0mm;
   padding-left: 6mm;
-  margin-top: 2mm;
-  margin-bottom: 2mm;
+  margin-top: 4mm;
+  padding-right: 11mm;
   border: none;
   background-color: transparent;
 }
@@ -245,7 +306,6 @@ div.cartItem {
   border-style: solid;
   border-color: darkgray;
   border-width: 0px 0px .5px 0px;
- 
 }
 
 .cartItemName {
@@ -665,6 +725,11 @@ li.rightSide {
     margin-right: 22px;
     width: 55%;
   }
+  ul.searchDropMenu {
+    width: 37%;
+    position: absolute;
+    left: 47%;
+  }
 
 }
 
@@ -677,10 +742,21 @@ li.rightSide {
     margin-left: 0px;
     margin-right: 0px;
   }
-
+  ul.searchDropMenu {
+    left: 48%;
+    width: 35%;
+  }
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1240px) {
+
+  /* cart dropdown */
+  div.cartDropMenu {
+    left: 13%;
+  }
+}
+
+@media only screen and (max-width: 1090px) {
   /* /* //whats new and same day delivery go away */
   span.deleteOnMobile {
     font-size: 0px;
@@ -732,34 +808,160 @@ li.rightSide {
     padding-left: -0;
     width: 50px;
   }
+
+  /* cart dropdown */
+  div.cartDropMenu {
+    font-size: 19px;
+    width: 200mm;
+    height: 186mm;
+    left: 10%;
+  }
+  div.cartItem {
+    padding-left: 1mm;
+    padding-top: 4mm;
+    width: 130mm;
+    height: 39mm;
+    font-size: 12px;
+  }
+  span.cartItemPrice {
+    padding-right: 1mm;
+  }
+  .itemSpanTwo {
+    padding-right: 2mm;
+    width: 250px;
+    font-size: 12px;
+  }
+
+  ul.searchDropMenu {
+    width: 52%;
+    position: relative;
+    left: 34%;
+  }
 }
 
-  @media only screen and (max-width: 600px) {
-    li.rightSide{
-      padding-left: 0;
-      width: 50px;
-      margin-left: 0mm;
-      display: inline-flex;
-      border: none;
-      justify-content: center;
-      position: relative;
-      padding-left: -0;
-      }
+@media only screen and (max-width: 840px) {
+  /* cart dropdown */
 
-    .searchBarWrap {
-      width: 300px;
-      /* margin-right: -21px; */
-      margin-right: -10px;
+  div.cartDropMenu {
+    width: 155mm;
+    height: 189mm;
+    font-size: 17px;
+    left: 10%;
+  }
+  div.cartItem {
+    width: 89mm;
+    height: 45mm;
+    font-size: 10px;
+  }
+  .itemsBody {
+    height: 109mm;
+  }
+  .itemsHeader {
+    font-size: 14px;
+  }
+  .itemSpanOne {
+    padding-left: 2mm;
+    padding-right: 0;
+    width: 66mm;
+    font-size: 12px;
+  }
 
-      justify-content: flex-start;
-      box-sizing: inherit;
-      -webkit-box-align: center;
-      align-items: center;
-      left: -2%;
-      position: relative;
-      margin-left: 0px;
-      /* margin-right: 32px; */
-    
+  select.catItemQty {
+    padding: 1mm;
+    width: 59px;
+    font-size: 10px;
+  }
+  .itemSpanTwo {
+    padding-right: 2mm;
+    width: 250px;
+    font-size: 10px;
+  }
+
+  .totalCost {
+    padding: 1mm;
+  }
+  h2.orderSummary {font-size: 16px;}
+
+  .expenseReport {
+    font-size: 9px;}
+
+  .expenseDetails {
+    font-size: 9px;
+  }
+  .totalExpenseCost {
+    font-size: 10px;
+  }
+  .totalLabel {
+    font-size: 11px;
+  }
+  button.checkOut {
+    font-size: 10px;
+  }
+  .cartNumber {
+    font-size: 8px;
+  }
+  input.promocode {
+    padding: 2mm;
+    width: 73px;
+  }
+  div.cartDropMenu {
+    left: 5%;
+  }
+  div.deliveryContainer {
+    left: 5%;
+  }
+  .discountSuccessContainer {
+    left: 5%;
+    width: 531px;
+  }
+
+  ul.searchDropMenu {
+    width: 36%;
+    left: 46%;
+  }
+
+  div.CatSuggestions {
+    font-size: 16px;
+  }
+  .catRows {
+    font-size: 14px;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+  
+  div.cartDropMenu {
+    left: 2%;
+  }
+  div.deliveryContainer {
+    left: 2%;
+  }
+  .discountSuccessContainer {
+    left: 6%;
+    width: 531px;
+  }
+
+  li.rightSide{
+    padding-left: 0;
+    width: 50px;
+    margin-left: 0mm;
+    display: inline-flex;
+    border: none;
+    justify-content: center;
+    position: relative;
+    padding-left: -0;
     }
 
+  .searchBarWrap {
+    width: 300px;
+    margin-right: -10px;
+    justify-content: flex-start;
+    box-sizing: inherit;
+    -webkit-box-align: center;
+    align-items: center;
+    left: -2%;
+    position: relative;
+    margin-left: 0px;
   }
+}

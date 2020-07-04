@@ -54,26 +54,26 @@ class App extends React.Component {
 
   componentDidMount () {
     /////cart Dummy Data///////
-    //  window.cart = [
-    //    {
-    //      name: 'pecan', 
-    //      pricePerUnit: '500.99', 
-    //      quantity: 111,
-    //      deliver: 2
+     window.cart = [
+       {
+         name: 'pecan', 
+         pricePerUnit: '500.99', 
+         quantity: 111,
+         deliver: 2
          
-    //    }, {
-    //     name: 'tom', 
-    //     pricePerUnit: '500.99', 
-    //     quantity: 22,
-    //     pickUp: 3
+       }, {
+        name: 'tom', 
+        pricePerUnit: '500.99', 
+        quantity: 22,
+        pickUp: 3
         
-    //    }, {
-    //     name: 'jan', 
-    //     pricePerUnit: '500.99', 
-    //     quantity: 2
-    //    }
-    // ];
-    window.cart = [];
+       }, {
+        name: 'jan', 
+        pricePerUnit: '500.99', 
+        quantity: 2
+       }
+    ];
+    //window.cart = [];
     this.getCart();
     $('body').on('click', '#pickup', (e) => {
       this.getCart();
