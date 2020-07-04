@@ -2,62 +2,59 @@
 
 var express = require('express');
 
-var app = express();
-
 var path = require('path');
-
-var PORT = process.env.PORT || 5300;
 
 var query = require('./db/querys.js');
 
-var bodyparser = require('body-parser');
-
-app.use(express["static"](path.join(__dirname, './client/dist/')));
-app.use(bodyparser.urlencoded({
+var PORT = process.env.PORT || 5300;
+var app = express();
+app.use(express.json());
+app.use(express.urlencoded({
   extended: true
 }));
-app.use(bodyparser.json());
+app.use(express["static"](path.join(__dirname, './client/dist/'))); //get request that returns a cat's data by cat name to the client
+
 app.get("/search/:catName", function (req, res) {
   var params = [req.params.catName];
-  console.log(params);
-  query.getCats(params, function (err, results) {
+  query.getCat(params, function (err, results) {
     if (err) {
       console.log('error getting from server: ', err);
-      res.status(504);
+      res.sendStatus(404);
     } else {
       res.status(200).send(results);
     }
   });
-});
+}); //get request that retrieves all the contents of the cart table
+
 app.get("/search/cart/cats", function (req, res) {
   query.getCart(function (err, results) {
     if (err) {
       console.log('error getting from server: ', err);
-      res.status(504);
+      res.sendStatus(504);
     } else {
       res.status(200).send(results);
     }
   });
-});
-app.post("/search/cart", function (req, res) {
+}); //this posts a cat to the cart table
+
+app.post("/search/cart/delete/post", function (req, res) {
   params = [req.body.catName, req.body.price];
-  console.log(params);
   query.postCatToCart(params, function (err, results) {
     if (err) {
       console.log('error getting from server: ', err);
-      res.status(504);
+      res.sendStatus(504);
     } else {
       res.status(200).send(results);
     }
   });
-});
-app["delete"]("/search/cart/:catId", function (req, res) {
+}); //this deletes cats from the cart table 
+
+app["delete"]("/search/cart/delete/:catId", function (req, res) {
   params = [req.params.catId];
-  console.log(params);
   query.deleteCatFromCart(params, function (err, results) {
     if (err) {
       console.log('error deleting cat from cart on server: ', err);
-      res.status(504);
+      res.sendStatus(504);
     } else {
       res.status(200).send(results);
     }

@@ -12,7 +12,7 @@ const SearchDropdown = ({searchDrop, getCat}) => {
           <div className="topBorder"></div>
             <button  
               className="catRows" 
-              onClick={(event) => getCat(event)}
+              onClick={() => getCat('walnut')}
               value='walnut'
               >
                Walnut
@@ -24,7 +24,7 @@ const SearchDropdown = ({searchDrop, getCat}) => {
             <button 
               className="catRows" 
               value="gizmo"
-              onClick={(event) => getCat(event)}
+              onClick={() => getCat('gizmo')}
               >
               Gizmo
               
@@ -34,7 +34,7 @@ const SearchDropdown = ({searchDrop, getCat}) => {
           <div className="topBorder"></div>
             <button 
               className="catRows"
-              onClick={(event) => getCat(event)}
+              onClick={() => getCat('tuxedo')}
               value='Tuxedo'
             >
              Tuxedo
@@ -45,7 +45,7 @@ const SearchDropdown = ({searchDrop, getCat}) => {
           <div className="topBorder"></div>
             <button 
               className="catRows"
-              onClick={(event) => getCat(event)}
+              onClick={() => getCat('luna')}
               value='Luna'
             >
                Luna

@@ -1,5 +1,4 @@
 const mysql = require('mysql');
-const bodyparser = require('body-parser');
 
 const connection = mysql.createConnection({
   host: process.env.RDS_HOSTNAME || 'localhost',
@@ -11,14 +10,14 @@ const connection = mysql.createConnection({
 
 connection.connect(err => {
   if(err) {
-    console.log(`couldnt connect to database`)
+    console.log(`couldnt connect to database`, err)
   } else {
     console.log(`connected to mysql database`)
   }
 });
 
 
-const getCats = (params, cb) => {
+const getCat = (params, cb) => {
 
   connection.query('select * from cats where name = (?)', params, (err, results) => {
     if(err) {
@@ -69,7 +68,7 @@ const deleteCatFromCart = (params, cb) => {
 }
 
 module.exports = {
-  getCats,
+  getCat,
   getCart,
   postCatToCart,
   deleteCatFromCart
