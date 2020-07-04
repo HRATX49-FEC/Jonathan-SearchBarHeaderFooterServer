@@ -621,6 +621,7 @@ li.leftSide span#left {
   position: relative;
   margin-left: 20px;
   margin-right: 32px;
+  margin-top: 3mm;
 }
 
 input.search {
