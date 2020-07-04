@@ -72,7 +72,7 @@ div.cartDropMenu {
   font-size: 19px;
   color: rgb(51,51,51);
   width: 250mm;
-  height: 186mm;
+  height: 192mm;
   position: absolute;
   left: 23%;
   display: inline-flex;
@@ -450,7 +450,7 @@ button.shopConfirmButtons {
   border-style: solid;
   border-color: darkgray;
   border-width: 0px 0px .5px 0px;
-  height: 105mm;
+  height: 110mm;
   overflow: scroll;
 }
 div.cartInfo {
