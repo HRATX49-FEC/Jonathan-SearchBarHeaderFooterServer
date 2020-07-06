@@ -476,7 +476,7 @@ div.price {
 select.catItemQty {
   border-radius: 4px;
   padding: 2mm;
-  width: 76px;
+  width: 85px;
   z-index: 4000;
 }
 select.catItemQty:hover {
