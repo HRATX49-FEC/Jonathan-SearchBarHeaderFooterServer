@@ -71,9 +71,12 @@ select.selectTag {
     background-color: none;  
     background: none;
     color: rgb(80, 75, 75);
-    font-size: 11px;
+    font-size: 12px;
     border: none;
 } 
+button.navLeftSide:hover {
+  cursor: pointer;
+}
 
   button.navLeftSide div span.leftSide {
     font-weight: lighter;

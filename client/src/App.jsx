@@ -50,6 +50,7 @@ class App extends React.Component {
     this.onPromoChange = this.onPromoChange.bind(this);
     this.togglePickup = this.togglePickup.bind(this);
     this.toggleDelivery= this.toggleDelivery.bind(this);
+    this.catQtyChange= this.catQtyChange.bind(this);
   };
 
   componentDidMount () {
@@ -58,13 +59,13 @@ class App extends React.Component {
     //    {
     //      name: 'pecan', 
     //      pricePerUnit: '500.99', 
-    //      quantity: 111,
+    //      quantity: 4,
     //      deliver: 2
          
     //    }, {
     //     name: 'tom', 
     //     pricePerUnit: '500.99', 
-    //     quantity: 22,
+    //     quantity: 2,
     //     pickUp: 3
         
     //    }, {
@@ -128,7 +129,7 @@ class App extends React.Component {
     //totals the quantity for each item in cart
     var quantityInCart = 0;
     for(var i = 0; i< this.state.cartData.length; i++) {
-      quantityInCart += this.state.cartData[i].quantity;
+      quantityInCart += Number(this.state.cartData[i].quantity);
     }
 
     this.setState({
@@ -156,17 +157,10 @@ class App extends React.Component {
   }
 
   deleteFromCart(event) {
-    const catId = event.target.value;
-    axios.get(`/search/cart/delete/${catId}`)
-      .then(res => {
-        this.getCart()
-      })
-      .then(res =>{
-        this.cartDropDown();
-      })
-      .catch(err=>{
-        console.log(err);
-      })
+    const index = event.target.value;
+    this.state.cartData.splice(index, 1);
+
+    setTimeout(() => this.changeCartQty(), 100);    
   }
 
   getSearchedCat (event) {
@@ -186,7 +180,7 @@ class App extends React.Component {
     this.setState ({
       promoCode: event.target.value,
     })
-    console.log(this.state.promoCode);
+    //console.log(this.state.promoCode);
   }
 // functions for Category, searchbar and shopping cart below
   searchDropAnimation () {
@@ -224,11 +218,10 @@ class App extends React.Component {
   }
   //changes the quantity on each cat item
   catQtyChange (event) {
-    window.cart[event.target.name].quantity = event.target.value;
 
-    this.setState({
-      cartData: window.cart
-    })
+    this.state.cartData[event.target.name].quantity = event.target.value;
+
+    setTimeout(() => this.changeCartQty(), 100);
   }
 
   categoryDropAnimation () {

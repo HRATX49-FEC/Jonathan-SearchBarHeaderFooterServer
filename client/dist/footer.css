@@ -21,13 +21,28 @@ div.seeOffer {
     border-left: 0px;
     border-right: 0px;
 }
+
+img.footerI {
+    height: 38px;
+    width: 47px;
+    float: right;
+    position: relative;
+    margin-top: -5mm;
+    right: -15%;
+}
+button.healthButton:hover {
+    cursor: pointer;
+}
+.kittySymbol {
+    cursor: pointer;
+}
 div.footerSelects {
     border-style: solid;
     border-radius: 1mm;
     border-color: white;
     border-width: .02px;
 }
-div.footerSelects select {
+div.footerSelects select.footSelects {
     font-size: 16px;
     width: 60px;
     height: 50px;
@@ -37,6 +52,10 @@ div.footerSelects select {
     margin: 3mm;
     min-width: max-content;
 
+}
+
+div.footerSelects select.footSelects:hover {
+    cursor: pointer;
 }
 
 button.healthButton {

@@ -1,4 +1,5 @@
 import React from 'react';
+import Arrow from '../images/up arrow.png';
 
 
 const SearchDropdown = ({searchDrop, getCat}) => {
@@ -18,17 +19,18 @@ const SearchDropdown = ({searchDrop, getCat}) => {
                Walnut
             
             </button>
+            <img className="arrow" onClick={() => getCat('walnut')} src="https://prrgetsearchbarfooter.s3.amazonaws.com/up+arrow.png" alt="up arrow" />
           </li>
-          <li className="row">
+          <li className="row" >
           <div className="topBorder"></div>
             <button 
               className="catRows" 
               value="gizmo"
               onClick={() => getCat('gizmo')}
               >
-              Gizmo
-              
+              Gizmo               
             </button>
+            <img className="arrow" onClick={() => getCat('gizmo')} src="https://prrgetsearchbarfooter.s3.amazonaws.com/up+arrow.png" alt="up arrow" /> 
           </li>
           <li className="row">
           <div className="topBorder"></div>
@@ -39,6 +41,7 @@ const SearchDropdown = ({searchDrop, getCat}) => {
             >
              Tuxedo
             </button>
+            <img className="arrow" onClick={() => getCat('tuxedo')} src="https://prrgetsearchbarfooter.s3.amazonaws.com/up+arrow.png" alt="up arrow" />
           </li>
 
           <li className="row">
@@ -50,7 +53,8 @@ const SearchDropdown = ({searchDrop, getCat}) => {
             >
                Luna
             </button>
-          </li>
+            <img className="arrow" onClick={() => getCat('luna')} src="https://prrgetsearchbarfooter.s3.amazonaws.com/up+arrow.png" alt="up arrow" />
+           </li>
         </ul>
     </div>
   )

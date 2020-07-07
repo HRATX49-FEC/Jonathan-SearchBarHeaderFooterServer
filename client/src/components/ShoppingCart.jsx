@@ -5,7 +5,7 @@ const ShoppingCart = ({ onPromoChange, promoCode, clickApply, onCheckoutClick, d
     //=====sets the shipping date to 5 days out=======//
     var shipDate = new Date();
 
-    shipDate.setDate(shipDate.getDate() + 5);
+    shipDate.setDate(shipDate.getDate() + 2);
     var dd = shipDate.getDate();
     var mm = shipDate.getMonth() + 1;
     var y = shipDate.getFullYear();
@@ -58,7 +58,7 @@ const ShoppingCart = ({ onPromoChange, promoCode, clickApply, onCheckoutClick, d
             for(var j = 0; j < data.length; j++) {
                 if(i !== j ) {
                     if(data[i].name === data[j].name) {
-                        data[i].quantity += data[j].quantity;
+                        data[i].quantity += Number(data[j].quantity);
                         if(data[j] !== data[data.length - 1]){
                             data[i].delivery += data[j].delivery;
                             data[i].pickup += data[j].pickup;
@@ -67,7 +67,7 @@ const ShoppingCart = ({ onPromoChange, promoCode, clickApply, onCheckoutClick, d
                     }
                 }
             }
-            cartQty += data[i].quantity;
+            cartQty += Number(data[i].quantity);
             totalCost += data[i].pricePerUnit * cartQty;
         }
         if(promoCode === 'catsruledogsdrool') {
@@ -151,16 +151,26 @@ const ShoppingCart = ({ onPromoChange, promoCode, clickApply, onCheckoutClick, d
                             <div className="cartItem" key={index}>
 
                                 <span className="itemSpanOne">
-                                    <div key={cat.id}>
+                                    <div key={index}>
                                         <span className="cartItemName">{cat.name}</span>
 
                                         {/* quantity drop down for each  cat/item */}
-                                        <select name ={cat.name} value={cat.quantity} onChange={() => catQtyChange()} className="catItemQty">
+                                        <select name ={index} value={cat.quantity} onChange={(event) => catQtyChange(event)} className="catItemQty">
                                             <option value="1">QTY 1</option>
                                             <option value="2">QTY 2</option>
                                             <option value="3">QTY 3</option>
                                             <option value="4">QTY 4</option>
                                             <option value="5">QTY 5</option>
+                                            <option value="6">QTY 6</option>
+                                            <option value="7">QTY 7</option>
+                                            <option value="8">QTY 8</option>
+                                            <option value="9">QTY 9</option>
+                                            <option value="10">QTY 10</option>
+                                            <option value="11">QTY 11</option>
+                                            <option value="12">QTY 12</option>
+                                            <option value="13">QTY 13</option>
+                                            <option value="14">QTY 14</option>
+                                            <option value="15">QTY 15</option>
                                         </select>
                                     </div>
                                     <div key="acc" className="protectionPlan">
@@ -180,7 +190,7 @@ const ShoppingCart = ({ onPromoChange, promoCode, clickApply, onCheckoutClick, d
                     
                                 </span>
                                  <span className="cartItemPrice">${Number(cat.pricePerUnit * cat.quantity).toLocaleString('en')}</span>
-                                <span className="removeCatButton"><button className="removeCat" value={cat.id} onClick={(event)=> deleteCat(event)}>X</button></span>
+                                <span className="removeCatButton"><button className="removeCat" value={index} onClick={(event)=> deleteCat(event)}>X</button></span>
                             </div>
                         )}
     
